@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildThisFileDirectory)\NuGet.Services.Build.tasks" />
+	<Import Project="$(MSBuildThisFileDirectory)\NuGet.Services.Build.Core.tasks" />
 
 	<Target Name="GetGitMetadata">
   		<GetGitMetadata RepositoryRoot="$(MSBuildThisFileDirectory)\..">
@@ -53,12 +53,18 @@
 	</Target>
 
 	<ItemGroup>
-		<CommonSourceFile Include="$(CommonsSourceDirectory)\*.cs" Exclude="$(CommonSourceDirectory)\CommonAssemblyInfo.cs" />
-		<Compile Include="$(CommonSourceDirectory)\CommonAssemblyInfo.cs">
+		<CommonSourceFile Include="$(CommonSourceDirectory)\*.cs" Exclude="$(CommonSourceDirectory)\CommonAssemblyInfo.cs" Condition="'$(CommonSourceDirectory)' != ''" />
+
+		<!-- Apparently VS will only work if there's a Dummy item like this... -->
+		<Compile Include="$(CommonSourceDirectory)\CommonAssemblyInfo.cs;Dummy" Exclude="Dummy" Condition="'$(CommonSourceDirectory)' != ''">
 	    	<Link>Properties\CommonAssemblyInfo.cs</Link>
 	    </Compile>
-	    <Compile Include="@(CommonSourceFile)">
+	    <Compile Include="@(CommonSourceFile);Dummy" Exclude="Dummy">
 	    	<Link>Common\%(Filename)%(Extension)</Link>
 	    </Compile>
 	</ItemGroup>
+	<Target Name="ItemDebug">
+		<Message Text="CommonSourceDirectory=$(CommonSourceDirectory)" />
+		<Message Text="CommonSourceFile=@(CommonSourceFile)" />
+	</Target>
 </Project>

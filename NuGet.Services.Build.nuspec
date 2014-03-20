@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.5">
     <id>NuGet.Services.Build</id>
-    <version>3.0.3</version>
+    <version>3.0.3-alpha-0008</version>
     <authors>Outercurve Foundation</authors>
     <owners>Outercurve Foundation</owners>
     <licenseUrl>https://github.com/NuGet/NuGetGallery/blob/master/LICENSE.txt</licenseUrl>
@@ -11,4 +11,7 @@
     <description>MSBuild scripts for NuGet.Services builds</description>
     <copyright>Copyright 2014 Outercurve Foundation</copyright>
   </metadata>
+  <files>
+    <file src="**" exclude="Publish.ps1" />
+  </files>
 </package>

@@ -6,8 +6,8 @@
 	</PropertyGroup>
 
 	<!-- Locate and import the repository props -->
-	<Import Project="$(RepositoryRoot)\Repository.props" />
+	<Import Project="$(RepositoryRoot)\Repository.props" Condition="Exists('$(RepositoryRoot)\Repository.props')" />
 
 	<!-- Import the build properties -->
-	<Import Project="$(NuGetBuildRoot)\NuGet.Services.Build.props" />
+	<Import Project="$(NuGetBuildRoot)\NuGet.Services.Build.Core.props" Condition="Exists('$(NuGetBuildRoot)\NuGet.Services.Build.Core.props')" />
 </Project>
