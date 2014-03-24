@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.5">
     <id>NuGet.Services.Build</id>
-    <version>3.0.3-alpha-0017</version>
+    <version>3.0.3-alpha-0018</version>
     <authors>Outercurve Foundation</authors>
     <owners>Outercurve Foundation</owners>
     <licenseUrl>https://github.com/NuGet/NuGetGallery/blob/master/LICENSE.txt</licenseUrl>

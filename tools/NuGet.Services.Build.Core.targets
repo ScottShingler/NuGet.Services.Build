@@ -4,9 +4,9 @@
 
 	<Target Name="GetGitMetadata">
   		<GetGitMetadata RepositoryRoot="$(RepositoryRoot)">
-	      <Output TaskParameter="Branch" PropertyName="Branch" />
-	      <Output TaskParameter="CommitId" PropertyName="Commit" />
-	      <Output TaskParameter="RepositoryUrl" PropertyName="RepositoryUrl" />
+	      <Output TaskParameter="Branch" PropertyName="Branch" Condition="'$(Branch)' == ''" />
+	      <Output TaskParameter="CommitId" PropertyName="Commit" Condition="'$(Commit)' == ''" />
+	      <Output TaskParameter="RepositoryUrl" PropertyName="RepositoryUrl" Condition="'$(RepositoryUrl)' == ''" />
 	    </GetGitMetadata>
 	    <Message Text="Extracted Git Metadata" />
 	    <Message Text=" Branch = $(Branch)" />
