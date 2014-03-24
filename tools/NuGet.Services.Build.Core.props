@@ -20,13 +20,13 @@
     <SemanticVersion Condition="'$(SemanticVersion)' == ''">$(SimpleVersion)-local-$(Branch)-$(Commit)</SemanticVersion>
     
     <!-- Directories -->
-    <BuildToolsDirectory>$(RootDirectory)\build</BuildToolsDirectory>
-    <SourceDirectory>$(RootDirectory)\src</SourceDirectory>
-    <CommonSourceDirectory>$(SourceDirectory)\Common</CommonSourceDirectory>
+    <BuildToolsDirectory>$(RepositoryRoot)\build</BuildToolsDirectory>
+    <SourceDirectory>$(RepositoryRoot)\src</SourceDirectory>
+    <CommonSourceDirectory>$(RepositoryRoot)\Common</CommonSourceDirectory>
   </PropertyGroup>
 
   <Target Name="CheckForMultipleSolutions">
-    <Error Text="Multiple solutions exist in $(RootDirectory)!" Condition="'@(SolutionFile->Count())' &gt; 1" />
+    <Error Text="Multiple solutions exist in $(RepositoryRoot)!" Condition="'@(SolutionFile->Count())' &gt; 1" />
   </Target>
 
   <Target Name="PropertyDebug">

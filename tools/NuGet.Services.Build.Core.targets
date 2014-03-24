@@ -3,7 +3,7 @@
 	<Import Project="$(MSBuildThisFileDirectory)\NuGet.Services.Build.Core.tasks" />
 
 	<Target Name="GetGitMetadata">
-  		<GetGitMetadata RepositoryRoot="$(MSBuildThisFileDirectory)\..">
+  		<GetGitMetadata RepositoryRoot="$(RepositoryRoot)">
 	      <Output TaskParameter="Branch" PropertyName="Branch" />
 	      <Output TaskParameter="CommitId" PropertyName="Commit" />
 	      <Output TaskParameter="RepositoryUrl" PropertyName="RepositoryUrl" />
