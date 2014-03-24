@@ -53,7 +53,7 @@
 	</Target>
 
 	<ItemGroup>
-		<Compile Include="$(CommonSourceDirectory)\CommonAssemblyInfo.cs" Condition="'$(CommonSourceDirectory)' != ''">
+		<Compile Include="$(MSBuildThisFileDirectory)\CommonAssemblyInfo.cs" Condition="Exists('$(MSBuildThisFileDirectory)\CommonAssemblyInfo.cs')">
 	    </Compile>
 	</ItemGroup>
 </Project>
