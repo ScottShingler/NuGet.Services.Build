@@ -22,7 +22,7 @@
     <!-- Directories -->
     <BuildToolsDirectory>$(RepositoryRoot)\build</BuildToolsDirectory>
     <SourceDirectory>$(RepositoryRoot)\src</SourceDirectory>
-    <CommonSourceDirectory>$(RepositoryRoot)\Common</CommonSourceDirectory>
+    <CommonSourceDirectory>$(SourceDirectory)\Common</CommonSourceDirectory>
   </PropertyGroup>
 
   <Target Name="CheckForMultipleSolutions">
