@@ -53,7 +53,6 @@
 	</Target>
 
 	<ItemGroup>
-		<!-- Apparently VS will only work if there's a Dummy item like this... -->
 		<Compile Include="$(CommonSourceDirectory)\CommonAssemblyInfo.cs" Condition="'$(CommonSourceDirectory)' != ''">
 	    </Compile>
 	</ItemGroup>
