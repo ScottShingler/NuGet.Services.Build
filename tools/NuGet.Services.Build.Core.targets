@@ -5,17 +5,17 @@
 	<Target Name="GetGitMetadata">
   		<GetGitMetadata RepositoryRoot="$(MSBuildThisFileDirectory)\..">
 	      <Output TaskParameter="Branch" PropertyName="Branch" />
-	      <Output TaskParameter="CommitId" PropertyName="CommitId" />
+	      <Output TaskParameter="CommitId" PropertyName="Commit" />
 	      <Output TaskParameter="RepositoryUrl" PropertyName="RepositoryUrl" />
 	    </GetGitMetadata>
 	    <Message Text="Extracted Git Metadata" />
 	    <Message Text=" Branch = $(Branch)" />
-	    <Message Text=" CommitId = $(CommitId)" />
+	    <Message Text=" CommitId = $(Commit)" />
 	    <Message Text=" RepositoryUrl = $(RepositoryUrl)" />
 	</Target>
 
 	<Target Name="CreateVersionInfoFile" DependsOnTargets="GetGitMetadata" BeforeTargets="CoreCompile">
-		<WriteVersionInfo Version="$(SimpleVersion)" Branch="$(Branch)" CommitId="$(CommitId)" RepositoryUrl="$(RepositoryUrl)" BuildDateUtc="$(BuildDateUtc)" InformationalVersion="$(SemanticVersion)" BuiltBy="$(BuildUser)" BuiltOn="$(BuildMachine)">
+		<WriteVersionInfo Version="$(SimpleVersion)" Branch="$(Branch)" CommitId="$(Commit)" RepositoryUrl="$(RepositoryUrl)" BuildDateUtc="$(BuildDateUtc)" InformationalVersion="$(SemanticVersion)" BuiltBy="$(BuildUser)" BuiltOn="$(BuildMachine)">
 			<Output TaskParameter="OutputFilename" PropertyName="VersionInfoFilePath" />
 		</WriteVersionInfo>
 		<ItemGroup>
@@ -53,18 +53,8 @@
 	</Target>
 
 	<ItemGroup>
-		<CommonSourceFile Include="$(CommonSourceDirectory)\*.cs" Exclude="$(CommonSourceDirectory)\CommonAssemblyInfo.cs" Condition="'$(CommonSourceDirectory)' != ''" />
-
 		<!-- Apparently VS will only work if there's a Dummy item like this... -->
-		<Compile Include="$(CommonSourceDirectory)\CommonAssemblyInfo.cs;Dummy" Exclude="Dummy" Condition="'$(CommonSourceDirectory)' != ''">
-	    	<Link>Properties\CommonAssemblyInfo.cs</Link>
-	    </Compile>
-	    <Compile Include="@(CommonSourceFile);Dummy" Exclude="Dummy">
-	    	<Link>Common\%(Filename)%(Extension)</Link>
+		<Compile Include="$(CommonSourceDirectory)\CommonAssemblyInfo.cs" Condition="'$(CommonSourceDirectory)' != ''">
 	    </Compile>
 	</ItemGroup>
-	<Target Name="ItemDebug">
-		<Message Text="CommonSourceDirectory=$(CommonSourceDirectory)" />
-		<Message Text="CommonSourceFile=@(CommonSourceFile)" />
-	</Target>
 </Project>

@@ -14,19 +14,25 @@
     <BuildMachine Condition="'$(BuildMachine)' == ''">$([System.Environment]::MachineName)</BuildMachine>
 
     <SimpleVersion Condition="'$(SimpleVersion)' == ''">3.0.1</SimpleVersion>
+
+    <SemanticVersion Condition="'$(SemanticVersion)' == '' And '$(PackageVersionTag)' != ''">$(SimpleVersion)-$(PackageVersionTag)</SemanticVersion>
+    <SemanticVersion Condition="'$(BuildNumber)' != ''">$(SemanticVersion)-$([System.Int32]::Parse($(BuildNumber)).ToString("0000"))</SemanticVersion>
     <SemanticVersion Condition="'$(SemanticVersion)' == ''">$(SimpleVersion)-local-$(Branch)-$(Commit)</SemanticVersion>
     
     <!-- Directories -->
-    <SourceDirectory Condition="$(RepositoryRoot) != ''">$(RepositoryRoot)\src</SourceDirectory>
-    <CommonSourceDirectory Condition="$(RepositoryRoot) != ''">$(MSBuildThisFileDirectory)\CommonSource</CommonSourceDirectory>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <!-- Custom imports -->
-    <CustomBeforeCloudServiceTargets>$(MSBuildThisFileDirectory)\NuGet.Services.Build.Cloud.targets</CustomBeforeCloudServiceTargets>
+    <BuildToolsDirectory>$(RootDirectory)\build</BuildToolsDirectory>
+    <SourceDirectory>$(RootDirectory)\src</SourceDirectory>
+    <CommonSourceDirectory>$(SourceDirectory)\Common</CommonSourceDirectory>
   </PropertyGroup>
 
   <Target Name="CheckForMultipleSolutions">
     <Error Text="Multiple solutions exist in $(RootDirectory)!" Condition="'@(SolutionFile->Count())' &gt; 1" />
+  </Target>
+
+  <Target Name="PropertyDebug">
+    <Message Text="Branch=$(Branch)" Importance="high" />
+    <Message Text="Commit=$(Commit)" Importance="high" />
+    <Message Text="SimpleVersion=$(SimpleVersion)" Importance="high" />
+    <Message Text="SemanticVersion=$(SemanticVersion)" Importance="high" />
   </Target>
 </Project>
