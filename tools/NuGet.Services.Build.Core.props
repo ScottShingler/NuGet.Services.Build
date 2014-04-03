@@ -3,7 +3,6 @@
   <!-- This file should always be at the root of the repository -->
   <PropertyGroup>
     <Platform>Any CPU</Platform> <!-- All NuGet Services are pure MSIL -->
-    <TargetProfile>Local</TargetProfile> <!-- Used by ccproj (Azure Cloud Projects) -->
     <Branch Condition="'$(Branch)' == ''">nobranch</Branch>
     <Commit Condition="'$(Commit)' == ''">HEAD</Commit>
     <BuildDateUtc>$([System.DateTime]::UtcNow)</BuildDateUtc>
