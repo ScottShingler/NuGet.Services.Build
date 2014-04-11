@@ -36,9 +36,9 @@
 	</PropertyGroup>
 	<Target Name="RunXunitTests">
 		<ItemGroup>
-			<_XunitAssemblies Include="%(Reference.Identity)" Condition="%(Reference.Identity).StartsWith('xunit')" />
+			<_XunitAssemblies Include="%(Reference.Identity)" Condition="$([System.String]::new('%(Reference.Identity)').StartsWith('xunit'))" />
 		</ItemGroup>
-		<Xunit Assembly="$(OutputAssembly)" Condition="'@(_XunitAssemblies)' != ''" />
+		<Xunit Assembly="$(OutputAssembly)" Condition="'$(_XunitAssemblies)' != ''" />
 	</Target>
 
 	<PropertyGroup>

@@ -12,7 +12,7 @@
     <BuildUser Condition="'$(BuildUser)' == ''">$([System.Environment]::UserName)</BuildUser>
     <BuildMachine Condition="'$(BuildMachine)' == ''">$([System.Environment]::MachineName)</BuildMachine>
 
-    <SimpleVersion Condition="'$(SimpleVersion)' == ''">3.0.1</SimpleVersion>
+    <SimpleVersion Condition="'$(SimpleVersion)' == ''">3.9999.9999</SimpleVersion>
 
     <SemanticVersion Condition="'$(SemanticVersion)' == '' And '$(PackageVersionTag)' != ''">$(SimpleVersion)-$(PackageVersionTag)</SemanticVersion>
     <SemanticVersion Condition="'$(BuildNumber)' != ''">$(SemanticVersion)-$([System.Int32]::Parse($(BuildNumber)).ToString("0000"))</SemanticVersion>
