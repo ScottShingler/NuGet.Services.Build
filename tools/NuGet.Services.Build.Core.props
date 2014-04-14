@@ -15,7 +15,7 @@
     <SimpleVersion Condition="'$(SimpleVersion)' == ''">3.9999.9999</SimpleVersion>
 
     <SemanticVersion Condition="'$(SemanticVersion)' == '' And '$(PackageVersionTag)' != ''">$(SimpleVersion)-$(PackageVersionTag)</SemanticVersion>
-    <SemanticVersion Condition="'$(BuildNumber)' != ''">$(SemanticVersion)-$([System.Int32]::Parse($(BuildNumber)).ToString("0000"))</SemanticVersion>
+    <SemanticVersion Condition="'$(SemanticVersion)' == '' And '$(BuildNumber)' != ''">$(SemanticVersion)-$([System.Int32]::Parse($(BuildNumber)).ToString("0000"))</SemanticVersion>
     <SemanticVersion Condition="'$(SemanticVersion)' == ''">$(SimpleVersion)-local-$(Branch)-$(Commit)</SemanticVersion>
     
     <!-- Directories -->
