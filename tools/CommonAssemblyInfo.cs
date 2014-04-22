@@ -9,7 +9,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("\x00a9 Outercurve Foundation. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
+#if !PORTABLE
 [assembly: ComVisible(false)]
+#endif
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
