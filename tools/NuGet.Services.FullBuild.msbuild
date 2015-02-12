@@ -27,7 +27,7 @@
         </ItemGroup>
         <PropertyGroup>
             <NuGetExePath>$(MSBuildThisFileDirectory)\nuget.exe</NuGetExePath>
-            <RestoreCommand>"$(NuGetExePath)" restore -Source "@(PackageSource)" "@(SolutionFile)" -NonInteractive</RestoreCommand>
+            <RestoreCommand>$(NuGetExePath) restore -Source "@(PackageSource)" "@(SolutionFile)" -NonInteractive</RestoreCommand>
         </PropertyGroup>
     
         <Message Text="Restoring packages ... " Importance="high" />
