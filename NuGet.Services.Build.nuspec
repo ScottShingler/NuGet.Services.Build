@@ -3,13 +3,13 @@
   <metadata minClientVersion="2.8">
     <id>NuGet.Services.Build</id>
     <version>3.0.5</version>
-    <authors>Outercurve Foundation</authors>
-    <owners>Outercurve Foundation</owners>
+    <authors>.NET Foundation</authors>
+    <owners>.NET Foundation</owners>
     <licenseUrl>https://github.com/NuGet/NuGetGallery/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/NuGet/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MSBuild scripts for NuGet.Services builds</description>
-    <copyright>Copyright 2014 Outercurve Foundation</copyright>
+    <copyright>Copyright 2015 .NET Foundation</copyright>
     <developmentDependency>true</developmentDependency>
   </metadata>
   <files>
