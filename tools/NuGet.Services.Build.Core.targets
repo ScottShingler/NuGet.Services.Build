@@ -38,7 +38,7 @@
 		<ItemGroup>
 			<_XunitAssemblies Include="%(Reference.Identity)" Condition="$([System.String]::new('%(Reference.Identity)').StartsWith('xunit'))" />
 		</ItemGroup>
-		<Xunit Assembly="$(OutputAssembly)" Condition="'$(_XunitAssemblies)' != ''" />
+		<Xunit Assemblies="$(OutputAssembly)" Condition="'$(_XunitAssemblies)' != ''" />
 	</Target>
 
 	<PropertyGroup>

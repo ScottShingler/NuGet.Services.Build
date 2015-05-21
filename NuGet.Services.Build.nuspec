@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.8">
     <id>NuGet.Services.Build</id>
-    <version>3.0.5</version>
+    <version>4.0.0</version>
     <authors>.NET Foundation</authors>
     <owners>.NET Foundation</owners>
     <licenseUrl>https://github.com/NuGet/NuGetGallery/blob/master/LICENSE.txt</licenseUrl>
@@ -13,6 +13,6 @@
     <developmentDependency>true</developmentDependency>
   </metadata>
   <files>
-    <file src="**" exclude="Publish.ps1" />
+    <file src="**" exclude="Publish.ps1;.gitignore;.git\**" />
   </files>
 </package>
